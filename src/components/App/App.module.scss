@@ -1,0 +1,18 @@
+body {
+  background: #F3F7FA;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__inner {
+    display: flex;
+  }
+
+  &__content {
+    margin-left: 20px;
+  }
+
+}

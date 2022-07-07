@@ -1,0 +1,40 @@
+.filter {
+  width: 232px;
+  height: 255px;
+  padding: 20px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+.filter__title {
+  margin: 0;
+  padding-bottom: 20px;
+  text-transform: uppercase;
+  font-family: 'Open Sans', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 12px;
+}
+
+.checkbox_group {
+  display: flex;
+  flex-direction: column;
+}
+
+.checkbox {
+  margin-right: 10px;
+  width: 20px;
+  height: 20px;
+}
+
+.label {
+  display: flex;
+  align-items: center;
+}
+
+.label:not(:last-child) {
+  padding-bottom: 20px;
+}
+
