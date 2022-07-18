@@ -1,12 +1,11 @@
 import React from 'react';
 
-import Filter from '../Filter';
+import FilterList from '../FilterList';
 import logo from '../../img/Logo.svg';
 import Tabs from '../Tabs';
 import TicketList from '../TicketList';
 import ButtonShowTicket from '../ButtonShowTicket';
 
-import 'antd/dist/antd.css';
 import style from './App.module.scss';
 
 const App: React.FC = () => {
@@ -16,7 +15,7 @@ const App: React.FC = () => {
         <img src={logo} alt="AviaSales logo" />
       </div>
       <div className={style.app__inner}>
-        <Filter />
+        <FilterList />
         <div className={style.app__content}>
           <Tabs />
           <main>

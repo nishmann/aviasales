@@ -23,6 +23,7 @@
   "plugins": ["react", "prettier", "import"],
   "parser": "@typescript-eslint/parser",
   "rules": {
+    "@typescript-eslint/default-param-last": "off",
     "indent": ["error", 2, {
       "SwitchCase": 1
     }],

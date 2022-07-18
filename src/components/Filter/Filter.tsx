@@ -1,33 +1,41 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+
+import { allFilterOff, allFilterOn, changeOtherInput } from '../../store/Filter/actionCreators';
 
 import style from './Filter.module.scss';
 
-const Filter: React.FC = () => {
+interface FilterInputProps {
+  name: string;
+  checked: boolean;
+  value: string;
+}
+
+const Filter: React.FC<FilterInputProps> = ({ name, value, checked: isChecked }) => {
+  const [checked, setChecked] = useState(isChecked);
+  const dispatch = useDispatch();
+
+  const changeChecked = (): void => {
+    if (!checked || checked) {
+      dispatch(changeOtherInput(name));
+      if (name === 'allTransfer' && !isChecked) {
+        dispatch(allFilterOn());
+      }
+      if (name === 'allTransfer' && isChecked) {
+        dispatch(allFilterOff());
+      }
+    }
+  };
+
+  useEffect(() => {
+    setChecked(isChecked);
+  }, [isChecked]);
+
   return (
-    <div className={style.filter}>
-      <div>
-        <h5 className={style.filter__title}>Количество пересадок</h5>
-        <div className={style.checkbox_group}>
-          <label className={style.label}>
-            <input className={style.checkbox} type="checkbox" />
-            Все
-          </label>
-          <label className={style.label}>
-            <input className={style.checkbox} type="checkbox" />
-            Без пересадок
-          </label>
-          <label className={style.label}>
-            <input className={style.checkbox} type="checkbox" />1 пересадка
-          </label>
-          <label className={style.label}>
-            <input className={style.checkbox} type="checkbox" />2 пересадки
-          </label>
-          <label className={style.label}>
-            <input className={style.checkbox} type="checkbox" />3 пересадки
-          </label>
-        </div>
-      </div>
-    </div>
+    <label className={style.label}>
+      <input className={style.checkbox} name={name} type="checkbox" checked={checked} onChange={changeChecked} />
+      <span>{value}</span>
+    </label>
   );
 };
 
