@@ -1,15 +1,10 @@
 import { useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { TicketActionCreators } from '../store/Ticket/actionCreators';
 
-import { allFilterOff, allFilterOn, changeOtherInput } from '../store/Filter/actionCreators';
+type bindActionCreatorsType = ReturnType<typeof bindActionCreators>;
 
-const allActionCreators = {
-  changeOtherInput,
-  allFilterOn,
-  allFilterOff,
-};
-
-export const useActions = () => {
+export const useActions = (): bindActionCreatorsType => {
   const dispatch = useDispatch();
-  return bindActionCreators(allActionCreators, dispatch);
+  return bindActionCreators(TicketActionCreators, dispatch);
 };

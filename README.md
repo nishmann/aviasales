@@ -2,4 +2,4 @@
 
 - React
 - TypeScript
-- Ant Design
+- Redux

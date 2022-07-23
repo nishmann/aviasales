@@ -7,7 +7,6 @@ import { IElement } from '../../store/Filter/types';
 
 const FilterList: React.FC = () => {
   const { filters } = useTypedSelector((data) => data.filterReducer);
-
   return (
     <div className={style.filter}>
       <div>

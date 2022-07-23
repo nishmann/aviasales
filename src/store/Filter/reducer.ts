@@ -1,4 +1,4 @@
-import { ActionType, FilterActionTypes, IFilterState } from './types';
+import { FilterActionCreatorType, FilterActionTypes, IFilterState } from './types';
 
 const initialState: IFilterState = {
   filters: [
@@ -30,7 +30,7 @@ const initialState: IFilterState = {
   ],
 };
 
-const filterReducer = (state = initialState, action: ActionType): IFilterState => {
+const filterReducer = (state = initialState, action: FilterActionCreatorType): IFilterState => {
   switch (action.type) {
     case FilterActionTypes.all_true:
       return {

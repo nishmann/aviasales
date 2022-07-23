@@ -1,15 +1,31 @@
+import React from 'react';
+
 import logo from '../../img/S7 Logo.svg';
 import Transfer from '../Transfer';
 
 import style from './TicketItem.module.scss';
 
-const TicketItem = () => {
+export interface Segment {
+  origin: string;
+  destination: string;
+  date: string;
+  stops: string[];
+  duration: number;
+}
+
+interface TicketProps {
+  price: number;
+  carrier: string;
+  segments: Segment[];
+}
+
+const TicketItem: React.FC<TicketProps> = ({ price, carrier, segments }) => {
   return (
     <div className={style.ticket}>
       <div className={style.ticket__head}>
-        <div className={style.ticket__price}>13 400 р</div>
+        <div className={style.ticket__price}>{price}</div>
         <div>
-          <img src={logo} alt="Fly company logo" />
+          <img src={`https://pics.avs.io/99/36/${carrier}.png`} alt="Fly company logo" />
         </div>
       </div>
       <Transfer />

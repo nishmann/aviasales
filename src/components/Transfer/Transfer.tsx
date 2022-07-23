@@ -1,6 +1,8 @@
+import React from 'react';
+
 import style from './Transfer.module.scss';
 
-const Transfer = () => {
+const Transfer: React.FC = () => {
   return (
     <ul className={style.transfer}>
       <li className={style.transfer__item}>

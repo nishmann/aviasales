@@ -1,13 +1,13 @@
-import { ActionType, FilterActionTypes } from './types';
+import { FilterActionCreatorType, FilterActionTypes } from './types';
 
-export const changeOtherInput = (name: string): ActionType => ({
+export const changeOtherInput = (name: string): FilterActionCreatorType => ({
   type: FilterActionTypes.other_input,
   payload: name,
 });
 
-export const allFilterOn = (): ActionType => ({
+export const allFilterOn = (): FilterActionCreatorType => ({
   type: FilterActionTypes.all_true,
 });
-export const allFilterOff = (): ActionType => ({
+export const allFilterOff = (): FilterActionCreatorType => ({
   type: FilterActionTypes.all_false,
 });

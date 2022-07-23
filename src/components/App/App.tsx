@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import FilterList from '../FilterList';
 import logo from '../../img/Logo.svg';
@@ -7,8 +7,13 @@ import TicketList from '../TicketList';
 import ButtonShowTicket from '../ButtonShowTicket';
 
 import style from './App.module.scss';
+import { useActions } from '../../hooks/useActions';
 
 const App: React.FC = () => {
+  const { startSearch } = useActions();
+  useEffect(() => {
+    startSearch();
+  }, []);
   return (
     <div className={style.app}>
       <div className={style.app__logo}>
@@ -20,7 +25,6 @@ const App: React.FC = () => {
           <Tabs />
           <main>
             <TicketList />
-            <ButtonShowTicket />
           </main>
         </div>
       </div>

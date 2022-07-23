@@ -27,4 +27,4 @@ interface ChangeOtherInputAction {
   payload: string;
 }
 
-export type ActionType = AllFilterOnAction | AllFilterOffAction | ChangeOtherInputAction;
+export type FilterActionCreatorType = AllFilterOnAction | AllFilterOffAction | ChangeOtherInputAction;
