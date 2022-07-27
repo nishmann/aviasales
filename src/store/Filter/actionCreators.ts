@@ -8,6 +8,11 @@ export const changeOtherInput = (name: string): FilterActionCreatorType => ({
 export const allFilterOn = (): FilterActionCreatorType => ({
   type: FilterActionTypes.all_true,
 });
+
 export const allFilterOff = (): FilterActionCreatorType => ({
   type: FilterActionTypes.all_false,
+});
+
+export const allTransferOff = (): FilterActionCreatorType => ({
+  type: FilterActionTypes.all_transfer_off,
 });

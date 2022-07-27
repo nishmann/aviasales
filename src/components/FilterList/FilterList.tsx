@@ -7,15 +7,16 @@ import { IElement } from '../../store/Filter/types';
 
 const FilterList: React.FC = () => {
   const { filters } = useTypedSelector((data) => data.filterReducer);
+  const checked = filters.filter((el) => (el.name !== 'allTransfer' ? el.checked : null));
   return (
     <div className={style.filter}>
       <div>
         <h5 className={style.filter__title}>Количество пересадок</h5>
-        <div className={style.checkbox_group}>
+        <ul className={style.checkbox_group}>
           {filters.map((el: IElement) => (
-            <Filter key={el.value} {...el} />
+            <Filter key={el.value} {...el} otherCheckedInputs={checked} />
           ))}
-        </div>
+        </ul>
       </div>
     </div>
   );

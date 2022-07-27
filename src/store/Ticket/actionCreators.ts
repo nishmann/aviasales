@@ -30,11 +30,11 @@ export const TicketActionCreators = {
         fetch('https://aviasales-test-api.kata.academy/search')
           .then((data) => data.json())
           .then(({ searchId }) => {
+            dispatch(TicketActionCreators.setIsLoading(true));
             dispatch(TicketActionCreators.getSearchId(searchId));
             return searchId;
           })
           .then((searchId) => {
-            dispatch(TicketActionCreators.setIsLoading(true));
             dispatch(TicketActionCreators.fetching(searchId));
           });
       } catch (e) {
@@ -47,7 +47,12 @@ export const TicketActionCreators = {
     return async (dispatch: ThunkDispatch<Record<string, unknown>, Record<string, unknown>, AnyAction>) => {
       try {
         fetch(`https://aviasales-test-api.kata.academy/tickets?searchId=${searchId}`)
-          .then((data) => data.json())
+          .then((data) => {
+            if (!data.ok) {
+              throw data;
+            }
+            return data.json();
+          })
           .then(({ tickets, stop }) => {
             const ticketsWithId = tickets.map((ticket: ITicket) => ({
               ...ticket,
@@ -56,15 +61,18 @@ export const TicketActionCreators = {
             dispatch(TicketActionCreators.getTickets(ticketsWithId));
             if (!stop) dispatch(TicketActionCreators.fetching(searchId));
             if (stop) dispatch(TicketActionCreators.setIsLoading(false));
+          })
+          .catch((e) => {
+            if (e.status === 500) {
+              dispatch(TicketActionCreators.fetching(searchId));
+            } else {
+              dispatch(TicketActionCreators.setError(true));
+              dispatch(TicketActionCreators.setIsLoading(false));
+            }
           });
       } catch (e) {
-        if (e.status === 500) {
-          dispatch(TicketActionCreators.fetching(searchId));
-        } else {
-          dispatch(TicketActionCreators.setError(true));
-          dispatch(TicketActionCreators.setIsLoading(false));
-        }
         dispatch(TicketActionCreators.setError(true));
+        dispatch(TicketActionCreators.setIsLoading(false));
       }
     };
   },

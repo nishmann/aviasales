@@ -47,6 +47,11 @@ const filterReducer = (state = initialState, action: FilterActionCreatorType): I
         ...state,
         filters: state.filters.map((el) => (el.name === action.payload ? { ...el, checked: !el.checked } : el)),
       };
+    case FilterActionTypes.all_transfer_off:
+      return {
+        ...state,
+        filters: state.filters.map((el) => (el.name === 'allTransfer' ? { ...el, checked: false } : el)),
+      };
     default:
       return state;
   }

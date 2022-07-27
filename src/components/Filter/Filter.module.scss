@@ -21,6 +21,8 @@
 .checkbox_group {
   display: flex;
   flex-direction: column;
+  margin: 0;
+  padding: 0;
 }
 
 .checkbox {
@@ -36,7 +38,12 @@
   cursor: pointer;
 }
 
-.label:not(:last-child) {
+.li:not(:last-child) {
   padding-bottom: 20px;
+}
+
+.li {
+  display: flex;
+  list-style: none;
 }
 
