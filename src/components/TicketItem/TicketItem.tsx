@@ -19,6 +19,7 @@ interface TicketProps {
 }
 
 const TicketItem: React.FC<TicketProps> = ({ price, carrier, segments }) => {
+  console.log(segments);
   return (
     <div className={style.ticket}>
       <div className={style.ticket__head}>
@@ -27,8 +28,9 @@ const TicketItem: React.FC<TicketProps> = ({ price, carrier, segments }) => {
           <img src={`https://pics.avs.io/99/36/${carrier}.png`} alt="Fly company logo" />
         </div>
       </div>
-      <Transfer />
-      <Transfer />
+      {segments.map((el) => (
+        <Transfer key={el.date} {...el} />
+      ))}
     </div>
   );
 };
