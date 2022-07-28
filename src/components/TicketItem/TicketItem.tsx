@@ -1,6 +1,5 @@
 import React from 'react';
 
-import logo from '../../img/S7 Logo.svg';
 import Transfer from '../Transfer';
 
 import style from './TicketItem.module.scss';

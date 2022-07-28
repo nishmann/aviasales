@@ -16,3 +16,8 @@ export const allFilterOff = (): FilterActionCreatorType => ({
 export const allTransferOff = (): FilterActionCreatorType => ({
   type: FilterActionTypes.all_transfer_off,
 });
+
+export const changeSortTicket = (name: string): FilterActionCreatorType => ({
+  type: FilterActionTypes.sorted_ticket,
+  payload: name,
+});

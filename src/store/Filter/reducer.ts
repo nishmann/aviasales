@@ -1,6 +1,7 @@
 import { FilterActionCreatorType, FilterActionTypes, IFilterState } from './types';
 
 const initialState: IFilterState = {
+  sortedTicket: 'cheap',
   filters: [
     {
       name: 'allTransfer',
@@ -51,6 +52,11 @@ const filterReducer = (state = initialState, action: FilterActionCreatorType): I
       return {
         ...state,
         filters: state.filters.map((el) => (el.name === 'allTransfer' ? { ...el, checked: false } : el)),
+      };
+    case FilterActionTypes.sorted_ticket:
+      return {
+        ...state,
+        sortedTicket: action.payload,
       };
     default:
       return state;
