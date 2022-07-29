@@ -20,3 +20,20 @@ export const sortTickets = (tickets: TicketWithId[] | [], sortValue: string): Ti
       return tickets;
   }
 };
+
+export const filterTicket = (tickets: TicketWithId[] | [], filters: string): TicketWithId[] => {
+  switch (filters) {
+    case 'allTransfer':
+      return tickets;
+    case 'withoutTransfer':
+      return tickets.filter((ticket) => ticket.segments[0].stops.length === 0 || ticket.segments[0].stops.length === 0);
+    case 'oneTransfer':
+      return tickets.filter((ticket) => ticket.segments[0].stops.length === 1 || ticket.segments[0].stops.length === 1);
+    case 'twoTransfer':
+      return tickets.filter((ticket) => ticket.segments[0].stops.length === 2 || ticket.segments[0].stops.length === 2);
+    case 'threeTransfer':
+      return tickets.filter((ticket) => ticket.segments[0].stops.length === 3 || ticket.segments[0].stops.length === 3);
+    default:
+      return tickets;
+  }
+};

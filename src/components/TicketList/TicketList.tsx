@@ -3,14 +3,14 @@ import React, { useState } from 'react';
 import TicketItem from '../TicketItem';
 import style from './TicketList.module.scss';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
-import { sortTickets } from '../../utils/filterTicket';
+import { filterTicket, sortTickets } from '../../utils/filterTicket';
 
 const TicketList: React.FC = () => {
   const [amount, setAmount] = useState(5);
   const { tickets } = useTypedSelector((state) => state.ticketReducer);
-  const { sortedTicket } = useTypedSelector((state) => state.filterReducer);
-
-  const sortingTicket = sortTickets(tickets, sortedTicket);
+  const { sortedTicket, activeFilter } = useTypedSelector((state) => state.filterReducer);
+  const filteredTicket = filterTicket(tickets, activeFilter);
+  const sortingTicket = sortTickets(filteredTicket, sortedTicket);
 
   return (
     <>

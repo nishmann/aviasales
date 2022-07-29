@@ -29,6 +29,7 @@ const initialState: IFilterState = {
       value: '3 пересадки',
     },
   ],
+  activeFilter: 'allTransfer',
 };
 
 const filterReducer = (state = initialState, action: FilterActionCreatorType): IFilterState => {
@@ -37,16 +38,19 @@ const filterReducer = (state = initialState, action: FilterActionCreatorType): I
       return {
         ...state,
         filters: state.filters.map((el) => ({ ...el, checked: true })),
+        activeFilter: 'allTransfer',
       };
     case FilterActionTypes.all_false:
       return {
         ...state,
         filters: state.filters.map((el) => ({ ...el, checked: false })),
+        activeFilter: 'allTransfer',
       };
     case FilterActionTypes.other_input:
       return {
         ...state,
         filters: state.filters.map((el) => (el.name === action.payload ? { ...el, checked: !el.checked } : el)),
+        activeFilter: action.payload,
       };
     case FilterActionTypes.all_transfer_off:
       return {

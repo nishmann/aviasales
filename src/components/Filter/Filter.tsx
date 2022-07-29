@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { allFilterOff, allFilterOn, allTransferOff, changeOtherInput } from '../../store/Filter/actionCreators';
 
 import style from './Filter.module.scss';
+import { FilterActionTypes } from '../../store/Filter/types';
 
 interface FilterInputProps {
   name: string;
@@ -36,7 +37,6 @@ const Filter: React.FC<FilterInputProps> = ({ name, value, checked: isChecked, o
     }
     setChecked(isChecked);
   }, [isChecked]);
-
   return (
     <li className={style.li}>
       <input className={style.checkbox} id={name} type="checkbox" checked={checked} onChange={changeChecked} />

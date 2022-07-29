@@ -15,6 +15,7 @@ export interface IElement {
 export interface IFilterState {
   sortedTicket: string;
   filters: IElement[];
+  activeFilter: string;
 }
 
 interface AllTransferOff {

@@ -19,7 +19,6 @@ interface TicketProps {
 }
 
 const TicketItem: React.FC<TicketProps> = ({ price, carrier, segments }) => {
-  console.log(segments);
   return (
     <div className={style.ticket}>
       <div className={style.ticket__head}>
